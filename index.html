@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Spots is a social media app where users share and like photos.">
@@ -9,17 +9,87 @@
     <link rel="stylesheet" href="./pages/index.css">
     <link rel="icon" href="./favicon.ico">
     <title>Spots</title>
-</head>
-<body>
-  <div class="page">
-    <header class="header"></header>
-    <main class="content">
-    <section class="profile">
-      Testing fonts
-    </section>
-    <section class="cards"></section>
-    </main>
-    <footer class="footer"></footer>
-  </div>
-</body>
+  </head>
+
+  <body>
+    <div class="page">
+
+      <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="Spots logo">
+      </header>
+
+      <main class="main">
+
+        <section class="profile">
+          <img class="profile__avatar" src="./images/avatar.jpg" alt="Jacques Cousteau avatar">
+
+          <div class="profile__info">
+            <h1 class="profile__name">Jacques Cousteau</h1>
+            <p class="profile__description">Explorer</p>
+          </div>
+
+          <button class="profile__edit-button" type="button"></button>
+        </section>
+
+        <section class="cards">
+          <ul class="cards__list">
+
+            <li class="card">
+              <img class="card__image" src="./images/photo1.jpg" alt="Bridge over water">
+              <div class="card__content">
+                <h2 class="card__title">A very long bridge over the water</h2>
+                <button class="card__like-button" type="button"></button>
+              </div>
+            </li>
+
+            <li class="card">
+              <img class="card__image" src="./images/photo2.jpg" alt="Mountain view">
+              <div class="card__content">
+                <h2 class="card__title">Beautiful mountain landscape</h2>
+                <button class="card__like-button" type="button"></button>
+              </div>
+            </li>
+
+            <li class="card">
+              <img class="card__image" src="./images/photo3.jpg" alt="Forest path">
+              <div class="card__content">
+                <h2 class="card__title">A quiet forest trail</h2>
+                <button class="card__like-button" type="button"></button>
+              </div>
+            </li>
+
+            <li class="card">
+              <img class="card__image" src="./images/photo4.jpg" alt="Val Thorens mountain village">
+              <div class="card__content">
+                <h2 class="card__title">Val Thorens</h2>
+                <button class="card__like-button" type="button"></button>
+              </div>
+            </li>
+
+            <li class="card">
+              <img class="card__image" src="./images/photo5.jpg" alt="Restaurant terrace">
+              <div class="card__content">
+                <h2 class="card__title">Restaurant terrace</h2>
+                <button class="card__like-button" type="button"></button>
+              </div>
+            </li>
+
+            <li class="card">
+              <img class="card__image" src="./images/photo6.jpg" alt="Outdoor cafe">
+              <div class="card__content">
+                <h2 class="card__title">An outdoor cafe</h2>
+                <button class="card__like-button" type="button"></button>
+              </div>
+            </li>
+
+          </ul>
+        </section>
+
+      </main>
+
+      <footer class="footer">
+      </footer>
+
+    </div>
+  </body>
 </html>
