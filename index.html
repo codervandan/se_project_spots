@@ -12,10 +12,14 @@
     <title>Spots</title>
   </head>
   <body>
+    <!-- Entire Page -->
     <div class="page">
+      <!-- HEADER -->
       <header class="header">
         <img class="header__logo" src="./images/logo.svg" alt="Spots logo">
       </header>
+
+      <!-- MAIN CONTENT -->
       <main class="main">
         <section class="profile">
           <img class="profile__avatar" src="./images/avatar.jpg" alt="Jacques Cousteau avatar">
@@ -23,8 +27,11 @@
             <h1 class="profile__name">Jacques Cousteau</h1>
             <p class="profile__description">Explorer</p>
           </div>
-          <button class="profile__edit-button" type="button"></button>
+          <button class="profile__edit-button" type="button">Edit</button>
+          <button class="profile__add-button" type="button">New Post</button>
         </section>
+
+        <!-- CARDS CONTENT -->
         <section class="cards">
           <ul class="cards__list">
             <li class="card">
@@ -72,12 +79,17 @@
           </ul>
         </section>
       </main>
+
+      <!-- FOOTER MAIN -->
       <footer class="footer">
         <p class="footer__copyright">2026 © Spots</p>
       </footer>
     </div>
-    <!-- Edit Modal -->
-    <div class="modal">
+
+    <!-- MODALS -->
+
+    <!-- EDIT MODAL -->
+    <div class="modal" id="edit-profile-modal">
       <div class="modal__container">
           <button type="button" class="modal__close"></button>
           <h3 class="modal__title">Edit profile</h3>
@@ -91,10 +103,9 @@
             <button type="submit" class="modal__save">Save</button>
         </form>
       </div>
-      
     </div>
-    <!-- New Post Modal -->
-    <div class="modal">
+    <!-- NEW POST MODAL -->
+    <div class="modal" id="new-post-modal">
       <div class="modal__container">
         <button class="modal__close" type="button"></button>
         <h3 class="modal__title">New post</h3>
@@ -109,5 +120,6 @@
         </form>
       </div>
     </div>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
