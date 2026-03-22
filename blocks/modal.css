@@ -24,16 +24,26 @@
   border-radius: 8px;
   width: 430px;
 }
-
+  
 .modal__close {
   position: absolute;
   top: 20px;
   right: 20px;
 
-  background: transparent;
+  width: 20px;
+  height: 20px;
+
+  background-image: url("../images/close-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
   border: none;
+  background-color: transparent;
   cursor: pointer;
 }
+
+
 
 .modal__form {
   display: flex;
