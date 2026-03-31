@@ -31,10 +31,10 @@
   top: 20px;
   right: 20px;
 
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
 
-  background-image: url("../images/close-icon.svg");
+  background-image: url("../images/close-icon.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

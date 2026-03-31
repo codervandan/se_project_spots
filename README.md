@@ -13,6 +13,8 @@ This project is made so all the elements are displayed correctly on popular scre
 **Figma**  
   
 * [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
+
+[Link to the project on Figam #4](https://www.figma.com/design/rGnA0eBcxYVOpA4bxmqlyu/Sprint-4-Project-Spots---March-2025?node-id=2-243&t=9izr0temiGBQsymK-0)
   
 **Images**  
   
