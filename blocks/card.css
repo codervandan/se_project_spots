@@ -27,6 +27,6 @@
 
 .card__like-button {
   border: none;
-  background: transparent;
   cursor: pointer;
+  background: transparent url("../images/like-icon-figma.png") center no-repeat;
 }

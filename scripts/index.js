@@ -74,7 +74,7 @@ function handleNewPostSubmit(evt) {
   console.log(imageInput.value);
   console.log(captionInput.value);
 
-  // Close modal
+  // CLOSE MODAL
   newPostModal.classList.remove("modal_is-opened");
 }
 
