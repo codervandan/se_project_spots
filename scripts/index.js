@@ -26,27 +26,40 @@ const newPostForm = newPostModal.querySelector(".modal__form");
 const imageInput = newPostModal.querySelector("#image-link");
 const captionInput = newPostModal.querySelector("#post-caption");
 
+// DECLARE OPEN AND CLOSE MODAL FUNCTIONS HERE 
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+}
+
 // OPEN EDIT MODAL 
 editButton.addEventListener('click', function() {
   // Prefill Inputs
   nameInput.value = profileNameEl.textContent;
   descriptionInput.value = profileDescriptionEl.textContent;
-  editModal.classList.add("modal_is-opened");
+  // editModal.classList.add("modal_is-opened");
+  openModal(editModal);
 });
 
 // CLOSE EDIT MODAL 
 editCloseButton.addEventListener('click', function() {
-    editModal.classList.remove("modal_is-opened");
+    // editModal.classList.remove("modal_is-opened");
+    closeModal(editModal);
 });
 
 // NEW POST MODAL
 newPostButton.addEventListener("click", () => {
-  newPostModal.classList.add("modal_is-opened");
+  // newPostModal.classList.add("modal_is-opened");
+  openModal(newPostModal);
 });
 
 // CLOSE NEW POST MODAL
 newPostCloseButton.addEventListener("click", () => {
-  newPostModal.classList.remove("modal_is-opened");
+  // newPostModal.classList.remove("modal_is-opened");
+  closeModal(newPostModal);
 });
 
 // FOREACH() LOOP 
