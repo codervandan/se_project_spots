@@ -117,9 +117,6 @@ newPostCloseButton.addEventListener("click", () => {
 
 // FOREACH() LOOP 
 initialCards.forEach(function (item) {
-  // Delete or comment this: 
-  // console.log(item.name);
-  // console.log(item.link);
   const card = getCardElement(item);
   cardsContainer.prepend(card);
 })

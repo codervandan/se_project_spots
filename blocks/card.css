@@ -10,6 +10,11 @@
   height: 282px;
   object-fit: cover;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.card__image:hover {
+  opacity: 1;
 }
 
 .card__content {
@@ -42,7 +47,7 @@
   opacity: 1;
 }
 
-.card__like-button:active {
+.card__like-button_active {
   background-image: url("../images/like-icon-active.png");
   opacity: 1;
 }

@@ -1,8 +1,6 @@
 @import url("../vendor/normalize.css");
 @import url("../vendor/fonts.css");
-/* @import url("../images/like-icon-figma.png");
-@import url("../images/close-icon.png"); */
-/* @import url("../images/edit-rectangle-icon.png"); */
+@import url("../images/close-icon.png");    
 @import url("../blocks/modal.css");
 @import url("../blocks/page.css");
 @import url("../blocks/header.css");

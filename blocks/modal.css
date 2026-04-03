@@ -10,7 +10,7 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: visibility 0.3s linear, opacity 0.3s ease;
 }
 
 .modal_is-opened {
@@ -23,7 +23,8 @@
   background-color: white;
   padding: 36px;
   border-radius: 8px;
-  width: 430px;
+  max-width: 430px;
+  width: 90%;
 }
   
 .modal__close {
@@ -42,6 +43,10 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+.modal__close:hover {
+  transform: scale(1.1);
 }
 
 
@@ -65,6 +70,10 @@
   color: white;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.modal__save:hover {
+  background-color: #333;
 }
 
 .modal__container_type_preview {
