@@ -64,11 +64,11 @@ function getCardElement(data) {
   })
   // Adding image 
   cardImage.addEventListener("click", () => {
-  previewImage.src = data.link;
-  previewImage.alt = data.name;
-  previewCaption.textContent = data.name;
+    previewImage.src = data.link;
+    previewImage.alt = data.name;
+    previewCaption.textContent = data.name;
 
-  openModal(previewModal);
+    openModal(previewModal);
 });
   // Return the element 
   return cardElement;
@@ -128,7 +128,7 @@ function handleProfileFormSubmit(evt) {
   profileNameEl.textContent = nameInput.value;
   profileDescriptionEl.textContent = descriptionInput.value;
   // Close modal
-  editModal.classList.remove("modal_is-opened");
+  closeModal(editModal);
 }
 
 profileForm.addEventListener("submit", handleProfileFormSubmit); 

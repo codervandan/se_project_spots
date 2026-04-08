@@ -4,6 +4,7 @@
   gap: 20px;
   justify-content: space-between;
   padding: 34px 0 20px;
+  border-bottom: 1px solid #21212166;
 }
 
 @media (max-width: 630px) {
@@ -31,8 +32,8 @@
 }
 
 .profile__avatar {
-  width: 120px;
-  height: 120px;
+  width: 190px;
+  height: 190px;
   border-radius: 8px;
 }
 
@@ -45,6 +46,7 @@
   font-size: 32px;
   margin: 0;
   max-width: 300px;
+  font-weight: 500px;
 }
 
 .profile__edit-button {
@@ -58,8 +60,10 @@
   border-radius: 8px;
   border: none;
   background-color: #000;
-  color: white;
+  color: #fcf5e5;
   cursor: pointer;
+  width: 157px;
+  height: 52px
 }
 
 .profile__edit-rectangle-icon {
