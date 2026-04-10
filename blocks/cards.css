@@ -1,17 +1,17 @@
 .cards__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 413px);
-
   gap: 40px 20px;
-
   list-style: none;
   padding: 0;
   margin: 12px 0 0;
+  /* justify-content: center ; */
 }
 
 @media (max-width: 1320px) {
   .cards__list {
     grid-template-columns: repeat(auto-fit, 413px);
+    /* justify-content: center; */
   }
 }
 

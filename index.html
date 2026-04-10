@@ -114,7 +114,7 @@
     <div class="modal" id="edit-profile-modal">
       <div class="modal__container">
         <button type="button" class="modal__close"></button>
-        <h3 class="modal__title">Edit profile</h3>
+        <h2 class="modal__title">Edit profile</h2>
         <form class="modal__form">
           <label for="profile-name" class="modal__label">
             Name
@@ -123,8 +123,11 @@
               type="text"
               class="modal__input"
               placeholder="Name"
+              maxlength="40"
+              minlength="2"
               required
             />
+            <span id="profile-name-error" class="modal__error"></span>
           </label>
           <label for="profile-description" class="modal__label"
             >Description
@@ -133,8 +136,11 @@
               type="text"
               class="modal__input"
               placeholder="Description"
+              maxlength="200"
+              minlength="2"
               required
             />
+            <span id="profile-description-error" class="modal__error"></span>
           </label>
           <button type="submit" class="modal__save">Save</button>
         </form>
@@ -144,7 +150,7 @@
     <div class="modal" id="new-post-modal">
       <div class="modal__container">
         <button class="modal__close" type="button"></button>
-        <h3 class="modal__title">New post</h3>
+        <h2 class="modal__title">New post</h2>
         <form class="modal__form">
           <label for="image-link" class="modal__label"
             >Image Link
@@ -155,6 +161,7 @@
               placeholder="Image url"
               required
             />
+            <span id="image-link-error" class="modal__error"></span>
           </label>
           <label for="post-caption" class="modal__label"
             >Caption
@@ -163,14 +170,16 @@
               type="text"
               class="modal__input"
               placeholder="Caption"
+              minlength="2"
+              maxlength="30"
               required
             />
+            <span id="post-caption-error" class="modal__error"></span>
           </label>
           <button type="submit" class="modal__save">Save</button>
         </form>
       </div>
     </div>
-    <!-- PREVIEW MODAL -->
     <!-- PREVIEW MODAL -->
     <div class="modal" id="preview-modal">
       <div class="modal__container modal__container_type_preview">
@@ -179,6 +188,7 @@
         <p class="modal__caption"></p>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
+    <script defer src="./scripts/index.js"></script>
+    <script defer src="./scripts/validation.js"></script>
   </body>
 </html>
