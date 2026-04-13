@@ -56,7 +56,7 @@ const previewImage = previewModal.querySelector(".modal__image");
 const previewCaption = previewModal.querySelector(".modal__caption");
 const previewCloseButton = previewModal.querySelector(".modal__close");
 // SELECTING THE DISABLE BUTTON ELEMENT 
-const cardSubmitBtn = document.querySelector(".modal__form");
+const cardSubmitBtn = newPostModal.querySelector(".modal__save");
 
 // FUNCTION getCardElement()
 function getCardElement(data) {
@@ -96,10 +96,12 @@ function getCardElement(data) {
 // DECLARE OPEN AND CLOSE MODAL FUNCTIONS HERE
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscape); // add listener here
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscape); // remove the listener 
 }
 
 // OPEN EDIT MODAL
@@ -176,3 +178,24 @@ function handleNewPostSubmit(evt) {
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
+
+// HANDLING THE CLOSE MODAL FUNCTION USING ESC KEY 
+const handleEscape = (evt) => {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_is-opened");
+    if (openModal) {
+      closeModal(openModal);
+    }
+  }
+};
+
+// CLOSING MODAL BY CLICKING ON THE OVERLAY FUNCTION 
+const modalList = document.querySelectorAll(".modal");
+
+modalList.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target === modal) {
+      closeModal(modal);
+    }
+  });
+});

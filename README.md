@@ -22,9 +22,10 @@ The way you'll do this at work is by exporting images directly from Figma — we
   
 Good luck and have fun!
 
-## Project Pitch Video
+## Project Pitch Videos
 
-Check out [this video](https://drive.google.com/file/d/13kBYtAsoEIYZDocvw9kH3_x4AL3LJk6o/view?usp=sharing), where I describe my project and some challenges I faced while building it.
+[SPOTS PROJECT STAGE 1] [this video](https://drive.google.com/file/d/13kBYtAsoEIYZDocvw9kH3_x4AL3LJk6o/view?usp=sharing)
+[SPOTS PROJECT STAGE 9] [(https://www.loom.com/share/61c36d36c48748b4a0a4e69956207877)]
 
 ## GitHub Pages Link
 (https://codervandan.github.io/se_project_spots/)
