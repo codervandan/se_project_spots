@@ -25,10 +25,10 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 
-  {
-    name: "Landscape test",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-  },
+  // {
+  //   name: "Landscape test",
+  //   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+  // },
 ];
 
 // SELECT ELEMENTS FOR EDITING MODAL
@@ -55,6 +55,8 @@ const previewModal = document.querySelector("#preview-modal");
 const previewImage = previewModal.querySelector(".modal__image");
 const previewCaption = previewModal.querySelector(".modal__caption");
 const previewCloseButton = previewModal.querySelector(".modal__close");
+// SELECTING THE DISABLE BUTTON ELEMENT 
+const cardSubmitBtn = document.querySelector(".modal__form");
 
 // FUNCTION getCardElement()
 function getCardElement(data) {
@@ -106,6 +108,7 @@ editButton.addEventListener("click", function () {
   nameInput.value = profileNameEl.textContent;
   descriptionInput.value = profileDescriptionEl.textContent;
   // editModal.classList.add("modal_is-opened");
+  resetValidation(editModal, [nameInput, descriptionInput]);
   openModal(editModal);
 });
 
@@ -163,7 +166,9 @@ function handleNewPostSubmit(evt) {
 
   const cardElement = getCardElement(newCard);
   cardsContainer.prepend(cardElement);
-  newPostForm.reset();
+  // newPostForm.reset();
+  evt.target.reset();
+  disableButton(cardSubmitBtn);
   closeModal(newPostModal);
 
   // CLOSE MODAL
