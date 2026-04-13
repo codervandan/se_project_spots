@@ -110,7 +110,7 @@ editButton.addEventListener("click", function () {
   nameInput.value = profileNameEl.textContent;
   descriptionInput.value = profileDescriptionEl.textContent;
   // editModal.classList.add("modal_is-opened");
-  resetValidation(editModal, [nameInput, descriptionInput]);
+  resetValidation(editModal, [nameInput, descriptionInput], settings);
   openModal(editModal);
 });
 
