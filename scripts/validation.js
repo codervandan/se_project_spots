@@ -1,7 +1,7 @@
 const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
+  submitButtonSelector: ".modal__save",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error"
@@ -61,26 +61,29 @@ const resetValidation = (formElement, inputList) => {
     })
 }
 
+// Use the settings objects in all functions instead of hard-coded strings 
 
-const setEventListeners = (formElement) => {
+
+const setEventListeners = (formElement, config) => {
     console.log(formElement);
-    const inputList = Array.from(formElement.querySelectorAll(".modal__input"));
-    const buttonElement = formElement.querySelector(".modal__save");
+    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+    const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
-    toggleButtonState(inputList, buttonElement);
+    toggleButtonState(inputList, buttonElement, config);
     
     inputList.forEach((inputElement) => {
         inputElement.addEventListener("input", function () {
-        checkInputValidity(formElement, inputElement);
-        toggleButtonState(inputList, buttonElement);
+        checkInputValidity(formElement, inputElement, config);
+        toggleButtonState(inputList, buttonElement, config);
         });
     });
 };
 
-const enableValidation = () => {
-    const formList = document.querySelectorAll(".modal__form");
+const enableValidation = (config) => {
+    // console.log(config.formSelector)
+    const formList = document.querySelectorAll(config.formSelector);
     formList.forEach((formElement) => {
-            setEventListeners(formElement);
+            setEventListeners(formElement, config);
         });
     };
-enableValidation();
+enableValidation(settings);
