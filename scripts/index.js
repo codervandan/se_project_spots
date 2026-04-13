@@ -96,12 +96,12 @@ function getCardElement(data) {
 // DECLARE OPEN AND CLOSE MODAL FUNCTIONS HERE
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-  document.addEventListener("keydown", handleEscape); // add listener here
+  document.addEventListener("keydown", closeOnEscape); // add listener here
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-  document.removeEventListener("keydown", handleEscape); // remove the listener 
+  document.removeEventListener("keydown", closeOnEscape); // remove the listener 
 }
 
 // OPEN EDIT MODAL
@@ -170,7 +170,7 @@ function handleNewPostSubmit(evt) {
   cardsContainer.prepend(cardElement);
   // newPostForm.reset();
   evt.target.reset();
-  disableButton(cardSubmitBtn);
+  disableButton(cardSubmitBtn, settings);
   closeModal(newPostModal);
 
   // CLOSE MODAL
@@ -180,11 +180,11 @@ function handleNewPostSubmit(evt) {
 newPostForm.addEventListener("submit", handleNewPostSubmit);
 
 // HANDLING THE CLOSE MODAL FUNCTION USING ESC KEY 
-const handleEscape = (evt) => {
+const closeOnEscape = (evt) => {
   if (evt.key === "Escape") {
-    const openModal = document.querySelector(".modal_is-opened");
-    if (openModal) {
-      closeModal(openModal);
+    const activeModal = document.querySelector(".modal_is-opened");
+    if (activeModal) {
+      closeModal(activeModal);
     }
   }
 };
