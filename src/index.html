@@ -9,7 +9,8 @@
     />
     <meta name="author" content="Daniel Quintana" />
     <meta name="keywords" content="photos, social media, sharing" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- REMOVE THE LINK TAG AS IT IS NOW BEING HANDLE BY THE CSS WEBPACK -->
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <link rel="icon" href="./favicon.ico" />
     <title>Spots</title>
   </head>
@@ -18,7 +19,7 @@
     <div class="page">
       <!-- HEADER -->
       <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Spots logo" />
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Logo" />
       </header>
 
       <!-- MAIN CONTENT -->
@@ -26,7 +27,7 @@
         <section class="profile page__section">
           <img
             class="profile__avatar"
-            src="./images/avatar.jpg"
+            src="<%=require('./images/avatar.jpg')%>"
             alt="Jacques Cousteau avatar"
           />
           <div class="profile__info">
@@ -35,7 +36,7 @@
             <button class="profile__edit-button" type="button">
               <img
                 class="profile__edit-default-icon"
-                src="./images/edit-profile-default.png"
+                src="<%=require('./images/edit-profile-default.png')%>"
                 alt="Editing your profile image"
               />
             </button>
@@ -189,7 +190,10 @@
         <p class="modal__caption"></p>
       </div>
     </div>
-    <script defer src="./scripts/index.js"></script>
-    <script defer src="./scripts/validation.js"></script>
+    <!-- REMOVE THE "defer" ATTRIBUTE AND ADD THE type="module" ATTRIBUTE INSTEAD -->
+    <!-- REMOVE THE SCRIPT TAG AS WEBPACK WILL NOW HANDLE THIS  -->
+    <!-- <script type="module" src="./scripts/index.js"></script> -->
+    <!--  REMOVE THIS LINE SINCE NOW WE NEED TO IMPORT IT  -->
+    <!-- <script defer src="./scripts/validation.js"></script> -->
   </body>
 </html>

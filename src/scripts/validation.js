@@ -1,4 +1,4 @@
-const settings = {
+export const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save",
@@ -57,13 +57,11 @@ const disableButton = (buttonElement, settings) => {
     buttonElement.classList.add(settings.inactiveButtonClass); // adding the modifier here 
 }
 
-const resetValidation = (formElement, inputList, settings) => {
+ export const resetValidation = (formElement, inputList, settings) => {
     inputList.forEach((input) => {
         hideInputError(formElement, input, settings);
     })
 }
-
-// Use the settings objects in all functions instead of hard-coded strings 
 
 
 const setEventListeners = (formElement, settings) => {
@@ -81,11 +79,15 @@ const setEventListeners = (formElement, settings) => {
     });
 };
 
-const enableValidation = (settings) => {
+// EXPORT THIS FUNCTION 
+export const enableValidation = (settings) => {
     // console.log(config.formSelector)
     const formList = document.querySelectorAll(settings.formSelector);
     formList.forEach((formElement) => {
             setEventListeners(formElement, settings);
         });
     };
-enableValidation(settings);
+
+
+// REMOVE THIS LINE SINCE NOW WE NEED TO CALL IT IN index.js FILE 
+// enableValidation(settings);

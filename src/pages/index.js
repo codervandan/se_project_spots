@@ -1,3 +1,8 @@
+// ADD IMPORT LINES HERE 
+import "../pages/index.css";
+import { enableValidation, settings, resetValidation } from "../scripts/validation.js";
+
+
 // ARRAY OF OBJECTS
 const initialCards = [
   {
@@ -199,3 +204,6 @@ modalList.forEach((modal) => {
     }
   });
 });
+
+// CALL THE EXPORTED enableValidation HERE 
+enableValidation(settings); 
