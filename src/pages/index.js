@@ -45,12 +45,8 @@ const api = new Api({
   }
 });
 
-// api
-// .getInitialCards()
-// .then((cards) => {
-//     console.log(cards);
-//   })  
   
+// TODO - Destrucutre the second item in the callback of the .then() 
   api
   .getAppInfo().then(([cards]) => {
     console.log(cards);
@@ -59,6 +55,9 @@ const api = new Api({
       const card = getCardElement(item);
       cardsContainer.prepend(card);
     });
+    // TODO - Handle the user's information
+    // TODO - set the src of the avatar image 
+    // TODO - set the textContent of both the text elements 
   })
   .catch(console.error);
 
@@ -172,11 +171,14 @@ newPostCloseButton.addEventListener("click", () => {
 // HANDLE FORM SUBMISSION
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  // Update profile
-  profileNameEl.textContent = nameInput.value;
-  profileDescriptionEl.textContent = descriptionInput.value;
-  // Close modal
-  closeModal(editModal);
+  api.editUserInfo({ name: nameInput.value, about: descriptionInput.value })
+  .then((data) => {
+    // TODO - use data argument instead of input.value 
+    profileNameEl.textContent = nameInput.value;
+    profileDescriptionEl.textContent = descriptionInput.value;
+    closeModal(editModal);
+  })
+  .catch(console.error)
 }
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
