@@ -1,7 +1,7 @@
 // ADD IMPORT LINES HERE 
 import "../pages/index.css";
 import { enableValidation, settings, resetValidation } from "../scripts/validation.js";
-
+import Api from "../utils/Api.js";
 
 // ARRAY OF OBJECTS
 const initialCards = [
@@ -36,7 +36,27 @@ const initialCards = [
   // },
 ];
 
-// SELECT ELEMENTS FOR EDITING MODAL
+// INSTANTIATE THE CLASS 
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "46d68034-b355-4513-ac51-674863048993", // Replace with your actual token
+    "Content-Type": "application/json"
+  }
+});
+
+api.getInitialCards().then((cards) => {
+    console.log(cards);
+    // FOREACH() LOOP
+    cards.forEach(function (item) {
+      const card = getCardElement(item);
+      cardsContainer.prepend(card);
+    });
+  })
+  .catch(console.error);
+  
+
+  // SELECT ELEMENTS FOR EDITING MODAL
 const editButton = document.querySelector(".profile__edit-button");
 const editModal = document.querySelector("#edit-profile-modal");
 const editCloseButton = editModal.querySelector(".modal__close");
@@ -142,11 +162,6 @@ newPostCloseButton.addEventListener("click", () => {
   closeModal(newPostModal);
 });
 
-// FOREACH() LOOP
-initialCards.forEach(function (item) {
-  const card = getCardElement(item);
-  cardsContainer.prepend(card);
-});
 
 // HANDLE FORM SUBMISSION
 function handleProfileFormSubmit(evt) {
