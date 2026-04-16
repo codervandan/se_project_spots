@@ -45,7 +45,14 @@ const api = new Api({
   }
 });
 
-api.getInitialCards().then((cards) => {
+// api
+// .getInitialCards()
+// .then((cards) => {
+//     console.log(cards);
+//   })  
+  
+  api
+  .getAppInfo().then(([cards]) => {
     console.log(cards);
     // FOREACH() LOOP
     cards.forEach(function (item) {
@@ -54,7 +61,6 @@ api.getInitialCards().then((cards) => {
     });
   })
   .catch(console.error);
-  
 
   // SELECT ELEMENTS FOR EDITING MODAL
 const editButton = document.querySelector(".profile__edit-button");
