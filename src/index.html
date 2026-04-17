@@ -9,8 +9,6 @@
     />
     <meta name="author" content="Daniel Quintana" />
     <meta name="keywords" content="photos, social media, sharing" />
-    <!-- REMOVE THE LINK TAG AS IT IS NOW BEING HANDLE BY THE CSS WEBPACK -->
-    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <link rel="icon" href="./favicon.ico" />
     <title>Spots</title>
   </head>
@@ -25,21 +23,26 @@
       <!-- MAIN CONTENT -->
       <main class="main">
         <section class="profile page__section">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="Jacques Cousteau avatar"
-          />
-          <div class="profile__info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
-            <p class="profile__description">Explorer</p>
-            <button class="profile__edit-button" type="button">
-              <img
-                class="profile__edit-default-icon"
-                src="<%=require('./images/edit-profile-default.png')%>"
-                alt="Editing your profile image"
-              />
+          <div class="profile__avatar-container">
+            <button class="profile__avatar-btn">
+              <img class="profile__pencil-icon" src="<%=require('./images/profile__pencil-icon.png')%>" alt="Pencil Icon" />
             </button>
+            <img
+              class="profile__avatar"
+              src="<%=require('./images/avatar.jpg')%>"
+              alt="Jacques Cousteau avatar"
+            />
+            <div class="profile__info">
+              <h1 class="profile__name">D</h1>
+              <p class="profile__description">Dev</p>
+              <button class="profile__edit-button" type="button">
+                <img
+                  class="profile__edit-default-icon"
+                  src="<%=require('./images/edit-profile-default.png')%>"
+                  alt="Editing your profile image"
+                />
+              </button>
+            </div>
           </div>
           <button class="profile__add-button" type="button">New Post</button>
         </section>
@@ -53,53 +56,11 @@
                 <div class="card__content">
                   <h2 class="card__title"></h2>
                   <button class="card__like-button" type="button"></button>
+                  <span class="card__like-count"></span>
                   <button class="card__delete-button" type="button"></button>
                 </div>
               </li>
             </template>
-            <!-- delete or comment the entire block li card  -->
-            <!-- <li class="card">
-              <img class="card__image" src="./images/photo1.jpg" alt="Bridge over water">
-              <div class="card__content">
-                <h2 class="card__title">A very long bridge over the water</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/photo2.jpg" alt="Mountain view">
-              <div class="card__content">
-                <h2 class="card__title">Beautiful mountain landscape</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/photo3.jpg" alt="Forest path">
-              <div class="card__content">
-                <h2 class="card__title">A quiet forest trail</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/photo4.jpg" alt="Val Thorens mountain village">
-              <div class="card__content">
-                <h2 class="card__title">Val Thorens</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/photo5.jpg" alt="Restaurant terrace">
-              <div class="card__content">
-                <h2 class="card__title">Restaurant terrace</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/photo6.jpg" alt="Outdoor cafe">
-              <div class="card__content">
-                <h2 class="card__title">An outdoor cafe</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li> -->
           </ul>
         </section>
       </main>
@@ -190,10 +151,25 @@
         <p class="modal__caption"></p>
       </div>
     </div>
-    <!-- REMOVE THE "defer" ATTRIBUTE AND ADD THE type="module" ATTRIBUTE INSTEAD -->
-    <!-- REMOVE THE SCRIPT TAG AS WEBPACK WILL NOW HANDLE THIS  -->
-    <!-- <script type="module" src="./scripts/index.js"></script> -->
-    <!--  REMOVE THIS LINE SINCE NOW WE NEED TO IMPORT IT  -->
-    <!-- <script defer src="./scripts/validation.js"></script> -->
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__container">
+        <button type="button" class="modal__close"></button>
+        <h2 class="modal__title">Edit avatar</h2>
+        <form class="modal__form" id="edit-avatar-form" novalidate>
+          <label for="profile-avatar-input" class="modal__label">
+            Avatar
+            <input
+              id="profile-avatar-input"
+              class="modal__input"
+              placeholder="avatar goes here"
+              name="avatar"
+              required
+            />
+            <span id="profile-avatar-input-error" class="modal__error"></span>
+          </label>
+          <button type="submit" class="modal__save">Save</button>
+        </form>
+    </div>
+    </div>
   </body>
 </html>
