@@ -48,7 +48,7 @@ const api = new Api({
   
 // TODO - Destrucutre the second item in the callback of the .then() 
   api
-  .getAppInfo().then(([cards]) => {
+  .getAppInfo().then(([cards, userData]) => {
     console.log(cards);
     // FOREACH() LOOP
     cards.forEach(function (item) {
@@ -58,6 +58,11 @@ const api = new Api({
     // TODO - Handle the user's information
     // TODO - set the src of the avatar image 
     // TODO - set the textContent of both the text elements 
+    // const profileAvatar = document.querySelector(".profile__avatar");
+  
+    profileAvatar.src = userData.avatar;
+    profileNameEl.textContent = userData.name;
+    profileDescriptionEl.textContent = userData.about;
   })
   .catch(console.error);
 
@@ -88,10 +93,19 @@ const previewCloseButton = previewModal.querySelector(".modal__close");
 // SELECTING THE DISABLE BUTTON ELEMENT 
 const cardSubmitBtn = newPostModal.querySelector(".modal__save");
 
+// SELECT AVATAR DOM SELECTORS
+const avatarModalBtn = document.querySelector(".profile__avatar-btn");
+const avatarModal = document.querySelector("#edit-avatar-modal");
+const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
+const avatarCloseButton = avatarModal.querySelector(".modal__close");
+const profileAvatar = document.querySelector(".profile__avatar");
+
+
 // FUNCTION getCardElement()
 function getCardElement(data) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-
+  const likeCountEl = cardElement.querySelector(".card__like-count");
   // Select the clone’s title and image elements and store them in variables.
   const cardTitle = cardElement.querySelector(".card__title");
   const cardImage = cardElement.querySelector(".card__image");
@@ -105,12 +119,31 @@ function getCardElement(data) {
 
   // Setting the like button
   cardLikeButton.addEventListener("click", () => {
-    cardLikeButton.classList.toggle("card__like-button_active");
+    const isLiked = cardLikeButton.classList.contains("card__like-button_active");
+
+    const apiCall = isLiked
+    ? api.unlikeCard(data._id)
+    : api.likeCard(data._id);
+
+    apiCall
+      .then((updatedCard) => {
+        cardLikeButton.classList.toggle("card__like-button_active");
+        likeCountEl.textContent = updatedCard.likes.length;
+      })
+      .catch(console.error);
+
+    // cardLikeButton.classList.toggle("card__like-button_active");
   });
   // Setting the delete button
   cardDeleteButton.addEventListener("click", () => {
-    cardElement.remove();
+    // cardElement.remove();
+    api.deleteCard(data._id)
+    .then(() => {
+      cardElement.remove();
+    })
+    .catch(console.error);
   });
+
   // Adding image
   cardImage.addEventListener("click", () => {
     previewImage.src = data.link;
@@ -167,21 +200,51 @@ newPostCloseButton.addEventListener("click", () => {
   closeModal(newPostModal);
 });
 
+// OPEN AVATAR MODAL
+avatarModalBtn.addEventListener("click", () => {
+  openModal(avatarModal);
+})
+// avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 // HANDLE FORM SUBMISSION
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  api.editUserInfo({ name: nameInput.value, about: descriptionInput.value })
+  const submitBtn = evt.submitter;
+  submitBtn.textContent = "Saving...";
+
+  api.editUserInfo({
+    name: nameInput.value,
+    about: descriptionInput.value
+  })
   .then((data) => {
-    // TODO - use data argument instead of input.value 
-    profileNameEl.textContent = nameInput.value;
-    profileDescriptionEl.textContent = descriptionInput.value;
+    profileNameEl.textContent = data.name;
+    profileDescriptionEl.textContent = data.about;
     closeModal(editModal);
   })
   .catch(console.error)
+  .finally(() => {
+    submitBtn.textContent = "Save";
+  });
 }
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
+
+
+// AVATAR FUNCTION 
+function handleAvatarFormSubmit(evt) {
+  evt.preventDefault();
+
+  api.updateAvatar({ avatar: avatarInput.value })
+    .then((data) => {
+      profileAvatar.src = data.avatar;
+      closeModal(avatarModal);
+    })
+    .catch(console.error);
+}
+  avatarForm.addEventListener("submit", handleAvatarFormSubmit);
+  profileAvatar.addEventListener("click", () => {
+    openModal(avatarModal);
+});
 
 // HANDLE NEW POST FORM SUBMIT
 function handleNewPostSubmit(evt) {
@@ -189,20 +252,18 @@ function handleNewPostSubmit(evt) {
   // replace and comment this out:
   // console.log(imageInput.value);
   // console.log(captionInput.value);
-  const newCard = {
+  api.addCard({
     name: captionInput.value,
-    link: imageInput.value,
-  };
-
-  const cardElement = getCardElement(newCard);
-  cardsContainer.prepend(cardElement);
-  // newPostForm.reset();
-  evt.target.reset();
-  disableButton(cardSubmitBtn, settings);
-  closeModal(newPostModal);
-
-  // CLOSE MODAL
-  // newPostModal.classList.remove("modal_is-opened");
+    link: imageInput.value
+  })
+  .then((cardData) => {
+    const cardElement = getCardElement(cardData);
+    cardsContainer.prepend(cardElement);
+    evt.target.reset();
+    disableButton(cardSubmitBtn, settings);
+    closeModal(newPostModal);
+  })
+  .catch(console.error);
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
